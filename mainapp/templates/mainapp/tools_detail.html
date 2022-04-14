@@ -1,0 +1,131 @@
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+<div class="d-none">
+        <div class="bg-primary p-3 d-flex align-items-center">
+            <a class="toggle togglew toggle-2" href="#"><span></span></a>
+            <h4 class="font-weight-bold m-0 text-white">Menu Bar</h4>
+        </div>
+    </div>
+    <div class="offer-section py-4">
+        <div class="container position-relative">
+            <img alt="#" src="{{object.photo.url}}" class="restaurant-pic">
+            <div class="pt-3 text-white">
+                <h2 class="font-weight-bold">{{object.customer_name}}</h2>
+                <p style="color: white; ">{{object.customer_address}}</p>
+                <p class="text-white m-0">{{object.name}}</p> <br>
+            </div>
+            <div class="pb-4">
+                <div class="row">
+                    <div class="col-6 col-md-2">
+                        <p class="text-white-50 font-weight-bold m-0 small">Days</p>
+                        <p class="text-white m-0">Mon - Sat</p>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <p class="text-white-50 font-weight-bold m-0 small">Open time</p>
+                        <p class="text-white m-0">8:00 AM</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="container">
+        <div class="p-3 bg-primary bg-primary mt-n3 rounded position-relative">
+            <div class="d-flex align-items-center"> 
+                <div>
+                    <p style="color: white; "> Detail of Item</p>
+                </div>
+                <a href="#" class="btn btn-sm btn-outline-light ml-auto">{{object.name}}</a>
+            </div>
+        </div>
+    </div> <br>
+    <div class="container">
+        <div class="p-3 bg-white bg-white mt-n3 rounded position-relative">
+            <div class="flex-column">
+                <h6 class="font-weight-bold">Details about Tool</h6>
+                <p class="text-muted">We have strong and reliable farm tools. Our machines are Available 24/27</p>
+            </p>{{object.description}}</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <!-- Farm Tools for Rent -->
+        <div class="pt-4 pb-2 title d-flex align-items-center">
+            <h5 class="m-0">Rent Farm Tools</h5><span class="badge badge-warning"> Hire a Tool</span>
+            <a class="font-weight-bold ml-auto" href="{%url 'toollist'%}">View all <i class="feather-chevrons-right"></i></a>
+        </div>
+        <!-- slider -->
+        <div class="trending-slider">
+            {%for tool in tools%}
+            <div class="edmund-slider-item">
+                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                    <div class="list-card-image">
+                        <div class="star position-absolute"><span class="badge badge-success"> Available</span></div>
+                        <a href="{%url 'tooldetail' tool.id%}">
+                            <img alt="#" src="{{tool.photo.url}}" class="img-fluid item-img w-100">
+                        </a>
+                    </div>
+                    <div class="p-3 position-relative">
+                        <div class="list-card-body">
+                            <h6 class="mb-1"><a href="{%url 'tooldetail' tool.id %}" class="text-black">{{tool.customer_name}}
+                          </a>
+                            </h6>
+                            <p class="text-gray mb-3"></p>
+                        </div>
+                        <div class="list-card-badge">
+                            <a href="{%url 'tooldetail' tool.id%}"> <span class="badge badge-danger">See Details</span> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    
+    <!-- Footer -->
+    <div class="edmund-menu-fotter fixed-bottom bg-white px-3 py-2 text-center d-none">
+        <div class="row">
+            <div class="col">
+                <a href="home.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-home text-dark"></i></p>
+                    Home
+                </a>
+            </div>
+            <div class="col selected">
+                <a href="trending.html" class="text-danger small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-map-pin"></i></p>
+                    Trending
+                </a>
+            </div>
+            <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
+                <div class="bg-danger rounded-circle mt-n0 shadow">
+                    <a href="checkout.html" class="text-white small font-weight-bold text-decoration-none">
+                        <i class="feather-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <a href="favorites.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-heart"></i></p>
+                    Favorites
+                </a>
+            </div>
+            <div class="col">
+                <a href="profile.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-user"></i></p>
+                    Profile
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+   
+    
+
+{%endblock%}

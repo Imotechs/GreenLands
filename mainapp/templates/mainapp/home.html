@@ -1,0 +1,236 @@
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+    <div class="osahan-home-page">
+        <div class="bg-primary p-3 d-none">
+            <div class="text-white">
+                <div class="title d-flex align-items-center">
+                    <a class="toggle" href="#">
+                        <span></span>
+                    </a>
+                    <h4 class="font-weight-bold m-0 pl-5">Browse</h4>
+                    <a class="text-white font-weight-bold ml-auto" data-toggle="modal" data-target="#exampleModal" href="#">Filter</a>
+                </div>
+            </div>
+            <div class="input-group mt-3 rounded shadow-sm overflow-hidden">
+                <div class="input-group-prepend">
+                    <button class="border-0 btn btn-outline-secondary text-dark bg-white btn-block"><i class="feather-search"></i></button>
+                </div>
+                <input type="text" class="shadow-none border-0 form-control" placeholder="Search for restaurants or dishes">
+            </div>
+        </div>
+        <!-- Filters -->
+        <div class="container">
+            <div class="cat-slider">
+              
+                {%for crop in crops%}
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="trending.html">
+                        <img alt="#" src="{{crop.photo.url}}" class="img-fluid mb-2">
+                        <p class="m-0 small">{{crop.name}}</p>
+                    </a>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+        <!-- offer section slider -->
+        <div class="bg-white">
+            <div class="container">
+                <div class="offer-slider">
+
+                        {%for advert in adverts%}
+                            <div class="cat-item px-1 py-3">
+                                <a class="d-block text-center shadow-sm" href="{%url 'advertdetail' advert.id%}">
+                                    <img alt="#" src="{{advert.photo.url}}" class="img-fluid rounded">
+                                </a>
+                            </div>
+                        {%endfor%}
+                        
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Trending this week -->
+            <div class="pt-4 pb-2 title d-flex align-items-center">
+                <h5 class="m-0">Trending this Season</h5>
+                <a class="font-weight-bold ml-auto" href="{%url 'trendinglist'%}">View all <i class="feather-chevrons-right"></i></a>
+            </div>
+            <!-- slider -->
+            <div class="trending-slider">
+              
+                {%for trending in trendings%}
+                <div class="osahan-slider-item">
+                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                        <div class="list-card-image">
+                            {%if trending.available%}
+                            <div class="star position-absolute"><span class="badge badge-success"><i class="feather-star"></i> Available</span></div>
+                           
+                            {%endif%}
+                            {%if not trending.available%}
+                            <div class="member-plan position-absolute"><span class="badge badge-dark"><i class="feather-star"></i> Unavailable</span></div>
+
+                            {%endif%}
+
+                            <a href="{%url 'trendingdetail' trending.id%}">
+                                <img alt="#" src="{{trending.photo.url}}" class="img-fluid item-img w-100">
+                            </a>
+                        </div>
+                        <div class="p-3 position-relative">
+                            <div class="list-card-body">
+                                <h6 class="mb-1"><a href="{%url 'trendingdetail' trending.id%}" class="text-black">{{trending.name}}
+                              </a>
+                                </h6>
+                                <p class="text-gray mb-3">{{trending.local_govt}}• {{trending.state}} • {{trending.country}}</p>
+                                <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i>{{trending.offer_season}}</span> 
+                            </div>
+                            <div class="list-card-badge">
+                                <span class="badge badge-danger">OFFER</span> <small> {{trending.offer_gain}} in {{trending.offer_duration}}</small>
+                            </div>
+                            {%if request.user.is_superuser%}
+                            <p><a href="{%url 'deletetrending' trending.id%}"><small style="color: red;">Delete</a></small>
+                            &nbsp;
+                            <a href="{%url 'updatetrending' trending.id%}"><small style="color: blue;">Edit</a></small>
+                            
+                            </p>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+                
+                
+            </div>
+
+            <div class="container">
+                <!-- Farm Tools for Rent -->
+                <div class="pt-4 pb-2 title d-flex align-items-center">
+                    <h5 class="m-0">Rent Farm Tools</h5><span class="badge badge-warning"> Hire a Tool</span>
+                    <a class="font-weight-bold ml-auto" href="{%url 'toollist' %}">View all <i class="feather-chevrons-right"></i></a>
+                </div>
+                <!-- slider -->
+                <div class="trending-slider">
+                    {%for tool in farm_tools%}
+                    <div class="osahan-slider-item">
+                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                            <div class="list-card-image">
+                                <div class="star position-absolute"><span class="badge badge-success"> Available</span></div>
+                                <a href="{%url 'tooldetail' tool.id%}">
+                                    <img alt="#" src="{{tool.photo.url}}" class="img-fluid item-img w-100">
+                                </a>
+                            </div>
+                            <div class="p-3 position-relative">
+                                <div class="list-card-body">
+                                    <h6 class="mb-1"><a href="{%url 'tooldetail' tool.id%}" class="text-black">{{tool.name}}
+                                  </a>
+                                    </h6>
+                                    <p class="text-gray mb-3">{{tool.customer_name}}</p>
+                                    <p class="text-gray mb-1 small"> {{tool.local_govt}} • {{tool.state}} • {{tool.country}}</p>
+                                </div>
+                                <div class="list-card-badge">
+                                    <a href="{%url 'tooldetail' tool.id%}"> <span class="badge badge-danger">See Details</span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        {%endfor%}
+                </div>
+
+            <!-- Lands for Rent -->
+            <div class="py-3 title d-flex align-items-center">
+                <h5 class="m-0">Lands for Rent</h5>
+                <a class="font-weight-bold ml-auto" href="{%url 'landlist'%}">View all <i class="feather-chevrons-right"></i></a>
+            </div>
+            <!-- Lands For Rent -->
+            <div class="most_popular">
+                <div class="row">
+                    {%for land in lands%}
+                    <div class="col-md-3 pb-3">
+                        <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                            <div class="list-card-image">
+                                <div class="star position-absolute"><span class="badge badge-success">Available</span></div>
+                                <div class="member-plan position-absolute"><span class="badge badge-dark">1 Year</span></div>
+                                <a href="{%url 'landdetail' land.id%}">
+                                    <img alt="#" src="{{land.photo.url}}" class="img-fluid item-img w-100">
+                                </a>
+                            </div>
+                            <div class="p-3 position-relative">
+                                <div class="list-card-body">
+                                    <h6 class="mb-1"><a href="{%url 'landdetail' land.id%}" class="text-black"> {{land.name}}
+                                
+                                 </a>
+                                    </h6>
+                                    <p class="text-gray mb-1 small"> {{land.local_govt}} •{{land.state}} • {{land.country}}</p>
+                                    <span class="badge badge-dark">Contact</span> <small> {{land.customer_phone}}</small>
+                                </div>
+                                <div class="list-card-badge">
+                                    <span class="badge badge-danger">N{{land.cost}}</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    {%endfor%} 
+                </div>
+            </div>
+            <!-- Job Room -->
+            <div class="pt-2 pb-3 title d-flex align-items-center">
+                <h5 class="m-0">Job Room</h5><span class="badge badge-warning"> Hire a Worker</span>
+                <a class="font-weight-bold ml-auto" href="{%url 'workerlist'%}">See all <i class="feather-chevrons-right"></i></a>
+            </div>
+            <!-- Job Room -->
+            <div class="most_sale">
+                <div class="row mb-3">
+                    {%for worker in workers%}
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                            <div class="list-card-image">
+                                <div class="star position-absolute"><span class="badge badge-success"> Available</span> <small>{{worker.user.username}}</small></div>
+                                <div class="member-plan position-absolute"><span class="badge badge-dark">Open</span></div>
+                                <a href="{%url 'workerdetail' worker.id%}">
+                                    <img alt="#" src="{{worker.user.profile.photo.url}}" class="img-fluid item-img w-100">
+                                </a>
+                            </div>
+                          
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="osahan-menu-fotter fixed-bottom bg-white px-3 py-2 text-center d-none">
+        <div class="row">
+            <div class="col selected">
+                <a href="home.html" class="text-danger small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-home text-danger"></i></p>
+                    Home
+                </a>
+            </div>
+            <div class="col">
+                <a href="most_popular.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-map-pin"></i></p>
+                    Trending
+                </a>
+            </div>
+            <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
+                <div class="bg-danger rounded-circle mt-n0 shadow">
+                    <a href="checkout.html" class="text-white small font-weight-bold text-decoration-none">
+                        <i class="feather-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <a href="favorites.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-heart"></i></p>
+                    Favorites
+                </a>
+            </div>
+            <div class="col">
+                <a href="profile.html" class="text-dark small font-weight-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-user"></i></p>
+                    Profile
+                </a>
+            </div>
+        </div>
+    </div>
+{%endblock content%}
