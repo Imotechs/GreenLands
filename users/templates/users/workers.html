@@ -1,0 +1,72 @@
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+    <div class="edmund-popular">
+        <!-- Find Workers -->
+        <div class="container">
+            <div class="most_popular py-5">
+                <div class="d-flex align-items-center mb-4">
+                    <h5 class="m-0">Workers Room</h5><span class="badge badge-warning"> Hire a Worker</span>
+                </div>
+                <div>
+                    <p>Click on the call button to call and request for a worker</p>
+                </div>
+                <div class="row">
+                    {%for worker in workers%}
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                            <div class="list-card-image">
+                                <div class="star position-absolute"><span class="badge badge-success">Available</span></div>
+                                
+                                <div class="member-plan position-absolute"><span class="badge badge-dark">
+                                    <a href="tel:+234-7062-698-896" class="text-black"><i class="fa-phone"></i>Call</a></span>
+                                </div>
+                                <a href="">
+                                    <img alt="#" src="{{worker.user.profile.photo.url}}" class="img-fluid item-img w-100">
+                                </a>
+                            </div>
+                            <div class="p-3 position-relative">
+                                <div class="list-card-body">
+                                    <h6 class="mb-1"><a href="" class="text-black"><span>{{worker.user}}</span> </a></h6>
+                                    <p class="text-gray mb-3"> {{worker.local_govt}} • {{worker.state}} • {{worker.country}}</p>
+                                    <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">{{worker.upfront}}</span></p>
+                                </div>
+                                <div class="list-card-badge">
+                                    <span class="badge badge-warning">For</span> <small>{{worker.type_of_work}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="paginator">
+    {% if is_paginated %}
+          {% if page_obj.has_previous%}
+          <a class="btn btn-outline-info mb-4" href="?page=1"> First</a>
+          <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number}}"> Previous</a>
+    
+          {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+    
+              {% if page_obj.number == num%}
+              <a class="btn btn-info mb-4" href="%?page={{num}}"> {{num}}</a>
+              {%elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+              <a class="btn btn-outline-info mb-4" href="?page={{num}}"> {{num}}</a>
+    
+              {%endif%}
+    
+            {%endfor%}
+    
+        {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}} "> Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages}}"> Last</a>
+    
+        {% endif %}
+    
+    
+    {% endif %}
+  </div>
+        </div>
+    </div>
+{%endblock content%}

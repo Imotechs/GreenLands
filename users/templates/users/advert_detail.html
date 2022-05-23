@@ -1,0 +1,80 @@
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+<div class="bg-success p-3 d-none">
+    <div class="text-white">
+        <div class="title d-flex align-items-center">
+            <a class="toggle" href="#">
+                <span></span>
+            </a>
+            <h4 class="font-weight-bold m-0 pl-5">Advert</h4>
+        </div>
+    </div>
+    <div class="input-group mt-3 rounded shadow-sm overflow-hidden">
+        <div class="input-group-prepend">
+            <button class="border-0 btn btn-outline-secondary text-dark bg-white btn-block"><i class="feather-search"></i></button>
+        </div>
+        <input type="text" class="shadow-none border-0 form-control" placeholder="Search..">
+    </div>
+    </div>
+
+    <div class="offer-section py-4">
+        <div class="container position-relative">
+            <div class="pt-3 text-white">
+                <h2 class="font-weight-bold"></h2>
+                <p class="text-white m-0"></p>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="p-2 bg-success bg-success mt-n2 rounded position-relative">
+            <div class="d-flex align-items-center">
+                <p style="color: white; font-size: 17px;">{{object.name}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu -->
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-md-8 pt-3">
+                <div class="shadow-sm rounded bg-white mb-3 overflow-hidden">
+                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                        <div class="list-card-image">
+                                <img alt="#" src="{{object.photo.url}}" class="img-fluid item-img mb-3 w-100">
+                        </div>
+                        <div class="p-3 position-relative">
+                            <div class="list-card-body">
+                                <h6 class="mb-1"><a href="" class="text-black"> {{object.name}}
+                            
+                             </a>
+                                </h6>
+                                <p class="text-gray mb-1 small">  </p>
+                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="mb-3">
+                    <div class="bg-white p-3 rating-review-select-page rounded shadow-sm">
+                        <div class="flex-column">
+                            <h6 class="font-weight-bold">Details about Advert</h6>
+                            <p class="text-muted">{{object.descriptions}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    
+    {%endblock content%}

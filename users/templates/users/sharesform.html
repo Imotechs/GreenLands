@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenLand</title>
+    <link href="{%static 'mainapp/css/sharesform.css'%}" rel="stylesheet">
+    <link href="{%static 'mainapp/css/style.css'%}" rel="stylesheet">
+</head>
+<body>
+    
+<div class="container">
+  <form method="post" enctype="multipart/form-data">
+    <div class="row">
+      <h4>Personal Information</h4>
+      <div class="input-group input-group-icon">
+        <input name="full_name" type="text" placeholder="Full Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input name ="phone"type="text" placeholder="Phone Number"/>
+        
+      </div>
+      {%csrf_token%}
+
+      <select name="status">
+        <option value="Married">Married</option>
+        <option value="Single">Single</option>
+      </select>
+      <select name="work_status">
+        <option value="Umployed">Employed</option>
+        <option value="Unemployed">Unemployed</option>
+        <option value="Student">Student</option>
+        <option value="Trader">Trader</option>
+        <option value="Farmer">Farmer</option>
+        <option value="Freelancer">Freelancer</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <h4>Contact Information</h4>
+      <div class="input-group input-group-icon">
+        <input name = "address"type="address" placeholder="Home Address"/>
+        
+      </div>
+      <div class="input-group input-group-icon">
+        <input name = "email"type="email" placeholder="Email"/>
+        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+      </div>
+
+      
+
+      <div class="row">
+        <h4>Means of Identification</h4>
+        <div class="col-half">
+          <div class="input-group input-group-icon">
+            <input name ="id_number"type="text" placeholder="ID Number"/>
+          </div>
+        </div>
+        <div>
+          <div class="input-group">
+            <select name="id_type">
+              <option value="Nation_id">National ID</option>
+              <option value="Voters_card">Voters Card</option>
+              <option value="Driver_licence">Driver Licence</option>
+              <option value="Passport">Passport</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+        </div>
+          
+        </div>
+        <div class="input-group input-group-icon">
+          <input name="Country" type="text" placeholder="Country"/>
+          
+        </div>
+      
+      
+    </div>
+
+    <div class="row">
+      <div class="col-half">
+        <h4>Date of Birth</h4>
+        <div class="input-group">
+          <div class="col-third">
+            <input name= "dobd"type="text" placeholder="DD"/>
+          </div>
+          <div class="col-third">
+            <input name= "dobm"type="text" placeholder="MM"/>
+          </div>
+          <div class="col-third">
+            <input name= "doby" type="text" placeholder="YYYY"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-half">
+        <h4>Gender</h4>
+        <div class="input-group">
+          <input id="gender-male" type="radio" name="gender" value="male"/>
+          <label for="gender-male">Male</label>
+          <input id="gender-female" type="radio" name="gender" value="female"/>
+          <label for="gender-female">Female</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h4>Payment Details</h4>
+      <div class="input-group">
+        <input id="payment-method-card" type="radio" name="payment_method" value="card" checked="true"/>
+        <label for="payment-method-card"><span><i class="fa fa-cc-visa"></i>Bank Account</span></label>
+        <input id="payment-method-paypal" type="radio" name="payment-method" value="paypal"/>
+        <label for="payment-method-paypal"> <span><i class="fa fa-cc-paypal"></i>Wallet</span></label>
+      </div>
+      <div class="input-group input-group-icon">
+        <input name = "acc_number" type="text" placeholder="Account Number"/>
+        <div class="input-icon"><i class="fa fa-credit-card"></i></div>
+      </div>
+      <div class="col-half">
+        <div class="input-group input-group-icon">
+          <input name = "bank" type="text" placeholder="Bank"/>
+          <div class="input-icon"><i class="fa fa-user"></i></div>
+        </div>
+      </div>
+      <div>
+        <div class="input-group">
+          <select name="acc_type">
+            <option value="savings">Savings</option>
+            <option value="current">Current</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <h4>Enter Investment Amount</h4>
+    <div class="input-group input-group-icon">
+      <input name ="amount" type="number" placeholder="Min:NGN {{shares.min_cost}}, Max NGN{{shares.max_cost}}"/>
+      
+    </div>
+
+    <div class="row">
+      <h4>Terms and Conditions</h4>
+      <div class="input-group">
+        <input id="terms" type="checkbox"/>
+        <label for="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label>
+      </div>
+    </div><br>
+
+    
+      <button type="submit" class="btn btn-success btn-dark btn-lg" href="payment_option.html"> Proceed to Payment</button>
+  </form>
+</div>
+
+
+</body>
+</html>

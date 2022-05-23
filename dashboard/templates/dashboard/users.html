@@ -1,0 +1,67 @@
+{%extends 'dashboard/base.html'%}
+{%load static%}
+{%block content%}
+        <div id="page-wrapper">
+          <div class="col-md-12 graphs">
+            <div class="xs">
+            <h3>Users Accounts</h3>
+            <input type="text" class="form-control" value="Search..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}"><br>
+            
+            <div class="bs-example4" data-example-id="contextual-table">
+            <table class="table">
+            <thead>
+              <tr>
+              <th>#</th>
+              <th>Names</th>
+              <th>Emails</th>
+              <th>Phone Number</th>
+              <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for user in users%}
+              <tr class="active">
+              <th scope="row">1</th>
+              <td>{{user.username}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.profile.phone}}</td>
+              {%if request.user.is_superuser%}
+              <td><a href="{%url 'addstaff' user.id%}">MakeStaff</a> </td>
+              {%endif%}
+              </tr>
+             {%endfor%}
+            </tbody>
+            <div class="paginator">
+                {% if is_paginated %}
+                      {% if page_obj.has_previous%}
+                      <a class="btn btn-outline-info mb-4" href="?page=1"> First</a>
+                      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number}}"> Previous</a>
+                
+                      {% endif %}
+                        {% for num in page_obj.paginator.page_range %}
+                
+                          {% if page_obj.number == num%}
+                          <a class="btn btn-info mb-4" href="%?page={{num}}"> {{num}}</a>
+                          {%elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+                          <a class="btn btn-outline-info mb-4" href="?page={{num}}"> {{num}}</a>
+                
+                          {%endif%}
+                
+                        {%endfor%}
+                
+                    {% if page_obj.has_next %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}} "> Next</a>
+                    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages}}"> Last</a>
+                
+                    {% endif %}
+                
+                
+                {% endif %}
+              </div>
+            </table>
+                                              
+
+         </div>
+         
+        </div>
+		{%endblock content%}

@@ -25,20 +25,20 @@ class ProfileForm(forms.ModelForm):
 class WorkerForm(forms.ModelForm):
     class Meta:
         model = AvailableWorker
-        fields = ['phone','id_card','id_number','description']
+        fields = ['phone','id_card','id_number','local_govt','state','country','description']
     def __init__(self, *args, **kwargs):
         super(WorkerForm, self).__init__(*args,**kwargs)
-        for fieldname in ['phone','id_card','id_number']:
+        for fieldname in ['phone','id_card','id_number','local_govt','state','country','description']:
             self.fields[fieldname].help_text = None
 
 
 class JobForm(forms.ModelForm):
     class Meta:
         model = AvailableJob
-        fields = ['type_of_work','local_govt','state','country','photo','description','number_of_workers','cost']
+        fields = ['type_of_work','local_govt','state','country','description','number_of_workers','cost']
     def __init__(self, *args, **kwargs):
         super(JobForm, self).__init__(*args,**kwargs)
-        for fieldname in ['type_of_work','local_govt','state','country','photo','description','number_of_workers','cost']:
+        for fieldname in ['type_of_work','local_govt','state','country','description','number_of_workers','cost']:
             self.fields[fieldname].help_text = None
   
 

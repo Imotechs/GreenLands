@@ -1,0 +1,88 @@
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+    <div class="offer-section py-4">
+        <div class="container position-relative">
+            <div class="pt-3 text-white">
+                <h2 class="font-weight-bold">{{object.name}}</h2>
+                <p class="text-white m-0">{{object.local_govt}}• {{object.state}} • {{object.country}}</p>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Menu -->
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-md-8 pt-3">
+                <div class="shadow-sm rounded bg-white mb-3 overflow-hidden">
+                    <div class="list-card-image">
+                        <a href="payment_option.html">
+                            <img alt="#" src="{{object.photo.url}}" class="img-fluid item-img w-100">
+                        </a>
+                    </div>
+                    <div class="p-3 position-relative">
+                        <div class="list-card-body">
+                            <h6 class="mb-1"><a href="" class="text-black">{{object.name}}
+                          </a>
+                            </h6>
+                            <p class="text-gray mb-3">{{object.local_govt}}• {{object.state}} • {{object.country}}</p>
+                            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="feather-clock"></i> {{object.offer_season}}</span> 
+                        </div>
+                        <div class="list-card-badge">
+                            <span class="badge badge-danger">OFFER</span> <small>{{object.offer_gain}}in {{object.offer_duration}}</small>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="mb-3">
+                    <div class="bg-white p-3 rating-review-select-page rounded shadow-sm">
+                        <div class="flex-column">
+                            <h6 class="font-weight-bold">Details about Farm</h6>
+                            <p class="text-muted">Be a part of our  farms in the Coming months. Invest  with  other like minds Farmers and 
+                                be a team of farmers supervised under GreenlandFarms. Get up to 45% return after harvest or get equivalence in crops. 
+                                Become a  farmer today with GreenlandFarms. <br><hr>
+
+                            {{object.description}}
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pt-3">
+                <div class="edmund-cart-item rounded rounded shadow-sm overflow-hidden bg-white sticky_sidebar">
+                    <form action="{%url 'checkout' object.id%}"  method = 'get' enctype="multipart/form-data" class="col-md-12 pt-3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-dark">Name</label>
+                            <input type="text"  required = "required" placeholder="Enter Fullname" class="form-control" id="example">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-dark">Phone No:</label>
+                            <input type="text" required = "required" placeholder="Enter Phone" class="form-control" id="example">
+                        </div>
+                        {%csrf_token%}
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-dark">Email</label>
+                            <input type="email"  required = "required" placeholder="Enter Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        
+         
+                    <div class="p-3">
+                        <button type="submit" class="btn btn-success btn-block btn-lg" > Join Now<i class="feather-arrow-right"></i></button>
+                    </div><hr>
+                </form>
+                    <div>
+                        <div class="p-3">
+                            <a class="btn btn-warning btn-block btn-lg" href="tel:+234-7062-698-896"> Call <i class="feather-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+    {%endblock content%}

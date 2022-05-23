@@ -1,0 +1,74 @@
+
+{%extends 'dashboard/base.html'%}
+{%load static%}
+{%block content%}
+        <div id="page-wrapper">
+          <div class="col-md-12 graphs">
+            <div class="xs">
+            <h3>Farm Payments</h3>
+            <input type="text" class="form-control" value="Search..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}"><br>
+            
+            <div class="bs-example4" data-example-id="contextual-table">
+            <table class="table">
+				<h6 style="color: green; font-weight: bolder;">Successful Payments</h6>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>User</th>
+          <th>Amount</th>
+          <th>Transaction ID</th>
+          <th>Farm Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for pay in validpays%}
+			
+        <tr class="success">
+          <th scope="row"><li></li></th>
+      <li><td>{{pay.user}}</td>
+      <td>{{pay.cost}}</td>
+      <td>{{pay.transaction_id}}</td>
+      <td>{{pay.farm}}</td>
+    </tr>
+
+    {%endfor%}
+       
+              
+            </tbody>
+            </table>
+         </div>
+		 <hr>
+		 
+            
+            <div class="bs-example4" data-example-id="contextual-table">
+            <table class="table">
+				<h6 style="color: red; font-weight: bolder;">Pending Payments</h6>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>User</th>
+						<th>Amount</th>
+						<th>Transaction ID</th>
+						<th>Farm Type</th>
+					</tr>
+				  </thead>
+				  <tbody>
+                    {%for pay in invalidpays%}
+			
+                    <tr class="active">
+                      <th scope="row"><li></li></th>
+                  <li><td>{{pay.user}}</td>
+                  <td>{{pay.cost}}</td>
+                  <td>{{pay.transaction_id}}</td>
+                  <td>{{pay.farm}}</td>
+                </tr>
+          
+                {%endfor%}
+					
+              
+            	</tbody>
+            </table>
+         
+         
+        </div>
+		{%endblock content%}

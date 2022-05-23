@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+{%load static%}
+{%load crispy_forms_tags%}
+<html>
+<head>
+<title>Greenland Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="{%static 'dashboard/css/bootstrap.min.css'%}" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="{%static 'dashboard/css/style.css'%}" rel='stylesheet' type='text/css' />
+<link href="{%static 'dashboard/css/font-awesome.css'%}" rel="stylesheet"> 
+<!-- jQuery -->
+<script src="{%static 'dashboard/js/jquery.min.js'%}"></script>
+<!----webfonts--->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<!---//webfonts--->  
+<!-- Bootstrap Core JavaScript -->
+<script src="{%static 'dashboard/js/bootstrap.min.js'%}"></script>
+</head>
+<body id="login">
+  <div class="login-logo">
+    <a href=""><img src="" alt=""/></a>
+  </div>
+  <h2 class="form-heading">User Login</h2>
+  <div class="app-cam">
+	  <form method="post" enctype="multipart/form-data">
+		  {%csrf_token%}
+		  {{form|crispy}}
+		<div class="submit"><input type="submit"  value="Login"></div>
+		<ul class="new">
+			<li class="new_left"><p><a href="{%url 'password_reset'%}">Forgot Password ?</a></p></li>
+			<li class="new_right"> <p class="sign">  New User?<a href="{%url 'register'%}"> Sign Up</a></p></li>
+			<div class="clearfix"></div>
+		</ul>
+	</form>
+  </div>
+   <div class="copy_layout login">
+      <p>Copyright &copy; 2022 GreenLands. All Rights Reserved </p>
+   </div>
+</body>
+</html>

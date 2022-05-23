@@ -8,9 +8,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/login/', LoginView.as_view(template_name = 'mainapp/login.html'), name = 'login'),
+    path('accounts/login/', LoginView.as_view(template_name = 'dashboard/login.html'), name = 'login'),
     path('accounts/logout/', LogoutView.as_view(template_name = 'mainapp/logout.html'), name = 'logout'),
     path('', include('mainapp.urls')),
+    path('dashboard/', include('dashboard.urls')),
+
     path('password-reset/', 
         auth_views.PasswordResetView.as_view(
             success_url = reverse_lazy('password_reset_done'),

@@ -1,10 +1,21 @@
 {%extends "mainapp/base.html"%}
 {%load static%}
 {%block content%}
-<div class="d-none">
-        <div class="bg-primary p-3 d-flex align-items-center">
-            <a class="toggle togglew toggle-2" href="#"><span></span></a>
-            <h4 class="font-weight-bold m-0 text-white">Menu Bar</h4>
+<div class="edmund-profile">
+    <div class="bg-success p-3 d-none">
+        <div class="text-white">
+            <div class="title d-flex align-items-center">
+                <a class="toggle" href="#">
+                    <span></span>
+                </a>
+                <h4 class="font-weight-bold m-0 pl-5">GreenLand</h4>
+            </div>
+        </div>
+        <div class="input-group mt-3 rounded shadow-sm overflow-hidden">
+            <div class="input-group-prepend">
+                <button class="border-0 btn btn-outline-secondary text-dark bg-white btn-block"><i class="feather-search"></i></button>
+            </div>
+            <input type="text" class="shadow-none border-0 form-control" placeholder="Search..">
         </div>
     </div>
     <div class="offer-section py-4">
@@ -33,7 +44,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="p-3 bg-primary bg-primary mt-n3 rounded position-relative">
+        <div class="p-3 bg-success bg-success mt-n3 rounded position-relative">
             <div class="d-flex align-items-center"> 
                 <div>
                     <p style="color: white; "> Detail of Item</p>
@@ -89,41 +100,7 @@
         </div>
     
     <!-- Footer -->
-    <div class="edmund-menu-fotter fixed-bottom bg-white px-3 py-2 text-center d-none">
-        <div class="row">
-            <div class="col">
-                <a href="home.html" class="text-dark small font-weight-bold text-decoration-none">
-                    <p class="h4 m-0"><i class="feather-home text-dark"></i></p>
-                    Home
-                </a>
-            </div>
-            <div class="col selected">
-                <a href="trending.html" class="text-danger small font-weight-bold text-decoration-none">
-                    <p class="h4 m-0"><i class="feather-map-pin"></i></p>
-                    Trending
-                </a>
-            </div>
-            <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
-                <div class="bg-danger rounded-circle mt-n0 shadow">
-                    <a href="checkout.html" class="text-white small font-weight-bold text-decoration-none">
-                        <i class="feather-shopping-cart"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col">
-                <a href="favorites.html" class="text-dark small font-weight-bold text-decoration-none">
-                    <p class="h4 m-0"><i class="feather-heart"></i></p>
-                    Favorites
-                </a>
-            </div>
-            <div class="col">
-                <a href="profile.html" class="text-dark small font-weight-bold text-decoration-none">
-                    <p class="h4 m-0"><i class="feather-user"></i></p>
-                    Profile
-                </a>
-            </div>
-        </div>
-    </div>
+    
     </div>
    
     

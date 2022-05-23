@@ -1,0 +1,99 @@
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+    <div class="offer-section py-4">
+        <div class="container position-relative">
+            <div class="pt-3 text-white">
+                <h2 class="font-weight-bold">{{object.name}}</h2>
+                <p class="text-white m-0">{{object.local_govt}} • {{object.state}} • {{object.country}}</p>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="p-2 bg-primary bg-primary mt-n2 rounded position-relative">
+            <div class="d-flex align-items-center">
+                <p style="color: white; font-size: 17px;">N{{object.cost}}</p>
+                <a href="tel:+234-7062-698-896" class="btn btn-sm btn-outline-light ml-auto">Call Now</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu -->
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-md-8 pt-3">
+                <div class="shadow-sm rounded bg-white mb-3 overflow-hidden">
+                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                        <div class="list-card-image">
+                            <a href="#">
+                                <img alt="#" src="{{object.photo.url}}" class="img-fluid item-img mb-3 w-100">
+                            </a>
+                        </div>
+                        <div class="p-3 position-relative">
+                            <div class="list-card-body">
+                                <h6 class="mb-1"><a href="lands_rent.html" class="text-black"> {{object.name}}
+                            
+                             </a>
+                                </h6>
+                                <p class="text-gray mb-1 small"> {{object.local_govt}} • {{object.state}} • {{object.country}}</p>
+                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="mb-3">
+                    <div class="bg-white p-3 rating-review-select-page rounded shadow-sm">
+                        <div class="flex-column">
+                            <h6 class="font-weight-bold">Details about Farmland</h6>
+                            <p class="text-muted">{{object.description}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pt-3">
+                <div class="edmund-cart-item rounded rounded shadow-sm overflow-hidden bg-white sticky_sidebar">
+                    <form method = 'post' enctype="multipart/form-data" class="col-md-12 pt-3">
+                        <div class="form-group">
+                            <p style="font-weight: bold;">Want this land? fill form to request</p>
+                            <label for="exampleInputEmail1" class="text-dark">Name</label>
+                            <input type="text" name = 'full_name'placeholder="Enter fullname" class="form-control" id="example">
+                        </div>
+                        {%csrf_token%}
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-dark">Phone No:</label>
+                            <input type="text" required = "required" name = 'phone' placeholder="Enter Phone" class="form-control" id="example">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-dark">Email</label>
+                            <input type="email"required = "required" name="email" placeholder="Enter Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-dark">Message [I want this farmland from ...time, to ...time.]</label>
+                            <textarea type="text" name="message" required = "required" class="form-control" id="example">
+                            </textarea>
+                            </div>
+                    
+                    <div class="p-3">
+                        <button type="submit" class="btn btn-success btn-block btn-lg" > Request Land Now<i class="feather-arrow-right"></i></button>
+                    </div><hr>
+                </form>
+                    <div>
+                        <div class="p-3">
+                            <a class="btn btn-warning btn-block btn-lg" href="tel:+234-7062-698-896"> Call <i class="feather-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    
+    {%endblock content%}

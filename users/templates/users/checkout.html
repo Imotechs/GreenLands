@@ -1,0 +1,99 @@
+
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+    <div class="d-none">
+        <div class="bg-primary p-3 d-flex align-items-center">
+            <a class="toggle togglew toggle-2" href="#"><span></span></a>
+            <h4 class="font-weight-bold m-0 text-white">Thanks :)</h4>
+        </div>
+    </div>
+    <div class="py-5 edmund-coming-soon d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="text-center pb-3">
+                <h1 class="font-weight-bold" style="font-size: x-large;">Make Payment </h1>
+            </div>
+            <!-- continue -->
+            <div class="bg-white shadow-sm">
+                <div class="container">
+                    <div class="bg-white">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="px-0 py-3 nav-link text-dark h6 border-0 mb-0 active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pay Online</a>
+                            </li>
+                            <li class="nav-item bottom-tab" role="presentation">
+                                <a class="px-0 py-3 nav-link text-dark h6 border-0 mb-0 ml-3 " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Manual Payment</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade py-4" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h5 class="mb-1">Use any Transfer Method </h5>
+                        <p>Make a manual transfer with the requested amount to the account details provided below</p>
+                        <div class="row">
+                            <div class="col-md-5 pb-4">
+                                <div class="edmund-slider-item">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                       
+                                        <div class="p-3 position-relative">
+                                            
+                                            <div class="list-card-badge">
+                                                <span class="badge badge-danger">Account Details: </span> <small> 2089336744</small> <br>
+                                                <span class="badge badge-danger">Bank </span> <small> UBA</small> <br>
+                                                <span class="badge badge-danger">Type </span> <small> Savings</small>
+                                            </div>
+
+                                                <ul>
+                                                    <li>Screen Shot your Debit Alert</li>
+                                                    <li>Send an email to <a href="#">eebiyenrin@gmail.com</a> containing the screenshot and your Full Name</li>
+                                                </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show active py-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h5 class="mb-1">Make your payment online </h5>
+                        <p>Confirm the details below and continue</p>
+                        <div class="row">
+                            <div class="col-md-5 pb-4">
+                                <div class="edmund-slider-item">
+                                    <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                        
+                                        <div class="p-3 position-relative">
+                                            <form action ='' method="post" enctype="multipart/form-data">
+
+                                            <div class="list-card-badge">
+                                                <span class="badge badge-danger">Name of Item: </span> <small>{{farm.name}}</small> <br>
+                                                <span class="badge badge-danger">Location: </span> <small> {{farm.local_govt}} • {{farm.state}} • {{farm.country}}</small> <br>
+                                                <span class="badge badge-danger">Duration: </span> <small> {{farm.offer_duration}}</small> <br>
+                                                <span class="badge badge-danger">Amount: </span> <small> N {{farm.cost}}</small>
+                                            </div>
+                                            {{form.as_p}}
+                                            {%csrf_token%}
+
+                                            <div class="p-3">
+                                                <div class="p-3">
+                                                    <button class="btn btn-dark btn-block btn-lg" type="submit" style="color: white;">PAY NOW<i class="feather-arrow-right"></i></button>
+                                                </div>
+                                            </div><hr>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>       
+                
+        </div>
+    </div>
+{%endblock content%}

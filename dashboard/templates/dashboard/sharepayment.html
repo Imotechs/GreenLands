@@ -1,0 +1,71 @@
+{%extends 'dashboard/base.html'%}
+{%load static%}
+{%block content%}
+        <div id="page-wrapper">
+          <div class="col-md-12 graphs">
+            <div class="xs">
+            <h3>Shares Payment</h3>
+            <input type="text" class="form-control" value="Search..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}"><br>
+            
+            <div class="bs-example4" data-example-id="contextual-table">
+            <table class="table">
+				<h6 style="color: green; font-weight: bolder;">Successful Payments</h6>
+            <thead>
+              <tr>
+				<th>#</th>
+				<th>User</th>
+				<th>Amount</th>
+				<th>Transaction ID</th>
+				<th>Share Type</th>
+              </tr>
+            </thead>
+            <tbody>
+				{%for share in validshares%}
+			
+				  <tr class="success">
+					<th scope="row"><li></li></th>
+				<li><td>{{share.full_name}}</td>
+				<td>{{share.cost}}</td>
+				<td>{{share.transaction_id}}</td>
+				<td>{{share.shares}}</td>
+              </tr>
+		
+              {%endfor%}
+            </tbody>
+            </table>
+         </div>
+		 <hr>
+		 
+            
+            <div class="bs-example4" data-example-id="contextual-table">
+            <table class="table">
+				<h6 style="color: red; font-weight: bolder;">Pending Payments</h6>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>User</th>
+						<th>Amount</th>
+						<th>Transaction ID</th>
+						<th>Share Type</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					{%for share in invalidshares%}
+			
+				  <tr class="active">
+					<th scope="row"><li></li></th>
+				<li><td>{{share.full_name}}</td>
+				<td>{{share.cost}}</td>
+				<td>{{share.transaction_id}}</td>
+				<td>{{share.shares}}</td>
+              </tr>
+		
+              {%endfor%}
+              
+            	</tbody>
+            </table>
+         
+         
+        </div>
+		{%endblock content%}
+

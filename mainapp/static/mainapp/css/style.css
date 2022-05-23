@@ -123,37 +123,37 @@ a {
 
 /* Menu */
 
-.osahan-menu-fotter {
+.edmund-menu-fotter {
     padding: 0px !important;
 }
 
-.osahan-menu-fotter .row {
+.edmund-menu-fotter .row {
     margin: 0px;
 }
 
-.osahan-menu-fotter .col {
+.edmund-menu-fotter .col {
     padding: 0px;
 }
 
-.osahan-menu-fotter .col a {
+.edmund-menu-fotter .col a {
     padding: 12px;
     display: block;
 }
 
-.osahan-menu-fotter .col a p {
+.edmund-menu-fotter .col a p {
     font-size: 19px;
 }
 
-.osahan-menu-fotter .col.selected a {
+.edmund-menu-fotter .col.selected a {
     color: #dc3545;
     background: #f8f9fa;
 }
 
-.osahan-menu-fotter .col.selected p {
+.edmund-menu-fotter .col.selected p {
     color: #dc3545;
 }
 
-.osahan-menu-fotter .col.bg-white.rounded-circle.mt-n4.px-3.py-2 {
+.edmund-menu-fotter .col.bg-white.rounded-circle.mt-n4.px-3.py-2 {
     width: 100px;
     min-width: 100px;
     max-width: 100px;
@@ -163,7 +163,7 @@ a {
     margin: -15px 0 0 0 !important;
 }
 
-.osahan-menu-fotter .col.bg-white.rounded-circle.mt-n4.px-3.py-2 a {
+.edmund-menu-fotter .col.bg-white.rounded-circle.mt-n4.px-3.py-2 a {
     width: 68px;
     color: #fff !important;
     height: 68px;
@@ -244,7 +244,7 @@ a {
 
 .sticky_sidebar,
 .c-t-order,
-.osahan-account {
+.edmund-account {
     position: sticky;
     top: 15px;
 }
@@ -565,7 +565,7 @@ p {
     margin: 0px;
 }
 
-.landing-page-skip .osahan-slider-item {
+.landing-page-skip .edmund-slider-item {
     padding: 0px 20px;
 }
 
@@ -749,7 +749,7 @@ p {
 
 /* Verification */
 
-.osahan-verification .form-control {
+.edmund-verification .form-control {
     text-align: center;
     font-size: 47px;
     border-bottom: 2px solid #ccc !important;
@@ -846,7 +846,7 @@ p {
 
 /* Map Page */
 
-.osahan-track-order-page {
+.edmund-track-order-page {
     min-height: 676px;
 }
 
@@ -864,7 +864,7 @@ p {
     margin: 0px 3px 2px 0px;
 }
 
-.osahan-point {
+.edmund-point {
     z-index: 1;
     width: 50%;
     border-radius: 50%;
@@ -874,43 +874,43 @@ p {
     border: 1px solid #ff3008;
 }
 
-.osahan-map iframe {
+.edmund-map iframe {
     width: 100% !important;
 }
 
-.osahan-map .toggle {
+.edmund-map .toggle {
     z-index: 9;
     margin: 2px 0 0 4px;
 }
 
-.osahan-map .mapouter.position-absolute {
+.edmund-map .mapouter.position-absolute {
     width: 100%;
     height: 100vh;
 }
 
-.osahan-map .bg-primary.border-bottom {
+.edmund-map .bg-primary.border-bottom {
     position: absolute;
     z-index: 9;
     width: 100%;
 }
 
-.osahan-map .fixed-bottom {
+.edmund-map .fixed-bottom {
     padding: 10px 0px;
 }
 
-.osahan-map .list-card.d-flex .list-card-image .item-img {
+.edmund-map .list-card.d-flex .list-card-image .item-img {
     width: 100px;
     height: 100px;
 }
 
-.osahan-map .list-card.d-flex .list-card-image {
+.edmund-map .list-card.d-flex .list-card-image {
     width: 100px;
     height: 100px;
     min-width: 100px;
     max-width: 100px;
 }
 
-.osahan-map .member-plan {
+.edmund-map .member-plan {
     text-align: center;
     background: rgb(255 255 255 / 18%);
     font-size: 12px;
@@ -1167,7 +1167,7 @@ footer .text-muted {
 
 /* orders css */
 
-.sc-osahan-logo {
+.sc-edmund-logo {
     height: 30px;
 }
 
@@ -1207,7 +1207,7 @@ footer .text-muted {
     position: sticky;
     top: 10px;
 }
-
+  
 
 /* search border */
 
@@ -1232,7 +1232,10 @@ footer .text-muted {
         display: none !important;
     }
     .section-header {
-        display: none;
+        display: block;
+    }
+    .section-footer{
+        display: block;
     }
     .header-main {
         height: 67px;
@@ -1270,7 +1273,7 @@ footer .text-muted {
         left: 17px;
     }
     footer.section-footer.border-top.bg-dark {
-        display: none;
+        display: block;
     }
     .pb-5,
     .py-5 {
@@ -1336,7 +1339,7 @@ footer .text-muted {
     }
     .restaurant-pic {
         display: block;
-        opacity:0.4;
+        opacity: 0.3;
     }
     .fixed-bottom-bar {
         padding-bottom: 56px;
@@ -1346,7 +1349,7 @@ footer .text-muted {
         left: 17px;
     }
     footer.section-footer.border-top.bg-dark {
-        display: none;
+        display: block;
     }
     .pb-5,
     .py-5 {
@@ -1372,3 +1375,36 @@ footer .text-muted {
         max-width: 100%;
     }
 }
+
+.wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .buttonn {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    }
+  
+  .buttonn:hover {
+    background-color: #1cbe7d;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+

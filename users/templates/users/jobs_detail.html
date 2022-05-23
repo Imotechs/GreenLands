@@ -1,0 +1,87 @@
+{%extends "mainapp/base.html"%}
+{%load static%}
+{%block content%}
+    <div class="edmund-profile">
+        <div class="d-none">
+            <div class="bg-success border-bottom p-3 d-flex align-items-center">
+                <a class="toggle togglew toggle-2" href="#"><span></span></a>
+                <h4 class="font-weight-bold m-0 text-white">Find Jobs</h4>
+            </div>
+        </div>
+        <!-- profile -->
+        <div class="container position-relative">
+            <div class="py-5 edmund-profile row">
+                <div class="col-md-8 mb-3">
+                    <div class="rounded shadow-sm p-4 bg-white">
+                        <h5 class="mb-4">Job Info</h5>
+                        <div id="edit_profile">
+                            <div>
+                                
+                                <div class="d-flex align-items-center list-card bg-white ">
+                                    <div class="p-3 position-relative">
+                                        <div class="list-card-body">
+                                            <h6><span class="badge badge-dark">{{object.type_of_work}}</span> 
+                                         </a>
+                                            </h6>
+                                            <p class="text-gray mb-3">{{object.local_govt}} • {{object.state}} • {{object.country}}</p>
+                                            <p class="text-gray mb-3 time"><span class="badge badge-warning text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">N {{object.cost}}</span></p> 
+                                        </div>
+                                        <div class="list-card-badge">
+                                            <small>Workers Needed: {{object.number_of_workers}}</small>
+                                        </div><br>
+
+                                        <div class="flex-column">
+                                            <h6 class="font-weight-bold">Job Description</h6>
+                                            <p class="text-muted">{{object.description}}<br><hr>
+                                            </p>
+                                            
+                                        </div>
+                                        {%if request.user.is_superuser%}
+                                        <p><a href="{%url 'deletejob' object.id%}"><small style="color: red;">Delete</a></small>
+                                        &nbsp;
+                                        <a href="{%url 'updatejob' object.id%}"><small style="color: blue;">Edit</a></small>
+                                        
+                                        </p>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                
+                                
+
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class=" rounded shadow-sm sticky_sidebar overflow-hidden">
+    
+                        <div class=" profile-details">
+                            {%for job in alljobs%}
+                            <div class="d-flex align-items-center list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                <div class="star position-absolute"><a href="{%url 'jobdetail' job.id%}"><span class="badge badge-success">See Job Descriptions</span></a></div>
+                                <div class="p-3 position-relative">
+                                    <div class="list-card-body">
+                                        <h6><span class="badge badge-dark">{{job.type_of_work}}</span> 
+                                     </a>
+                                        </h6>
+                                        <p class="text-gray mb-3">{{job.local_govt}} • {{job.state}} • {{job.country}}</p>
+                                        <p class="text-gray mb-3 time"><span class="badge badge-warning text-dark rounded-sm pl-2 pb-1 pt-1 pr-2">N{{job.cost}}</span></p> 
+                                    </div>
+                                    <div class="list-card-badge">
+                                        <small>Workers Needed: {{job.number_of_workers}}</small>
+                                    </div>
+                                </div>
+                            </div><br>
+                           {%endfor%}
+                          
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    <!-- Footer -->
+    
+  {%endblock content%}
